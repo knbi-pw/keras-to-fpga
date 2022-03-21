@@ -16,6 +16,7 @@ def create_model():
     net.relu2 = cl.ReLU(net.den2, in_place=True)
     net.den3 = cl.InnerProduct(net.relu2, num_output=10)
     net.soft = cl.Softmax(net.den3)
-
+    net.score = caffe.layers.Softmax(net.soft)
+    net.loss = caffe.layers.SigmoidCrossEntropyLoss(net.score, net.labels_aug)
     with open('model_test.prototxt', 'w') as f: f.write(str(net.to_proto()))
     return net
