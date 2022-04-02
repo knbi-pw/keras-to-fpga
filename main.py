@@ -16,7 +16,7 @@ def parse_args():
 def main():
     argument = parse_args()
     model_name = argument.model
-    #caffe_model.create_model()
+    caffe_model.create_model()
     c_model = caffe.Net("model_test.prototxt", caffe.TRAIN)
     model = keras.models.load_model(model_name)
     keras_weights_to_caffe_model(model,c_model)

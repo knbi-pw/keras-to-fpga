@@ -27,4 +27,4 @@ def keras_weights_to_caffe_model(keras_model, caffe_model):
             caffe_model.params['{}_sc'.format(layer.name)][0].data[...] = gamma  # scale
             caffe_model.params['{}_sc'.format(layer.name)][1].data[...] = beta  # bias
 
-
+    caffe_model.save('myconvmodel.caffemodel')
